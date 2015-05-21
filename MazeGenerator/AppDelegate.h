@@ -1,9 +1,9 @@
 //
 //  AppDelegate.h
-//  MazeGenerator
+//  SpeedMaze
 //
-//  Created by littlebeef on 5/20/15.
-//  Copyright (c) 2015 beefSama. All rights reserved.
+//  Created by littlebeef on 11/20/14.
+//  Copyright (c) 2014 beefSama. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
