@@ -36,6 +36,14 @@
     return self;
 }
 
+/**
+ *  do all the necessary steps to build a maze;
+ */
+-(void)defaultMaze{
+    [self defaultGenerateMaze];
+    [self defaultSolveMaze];
+}
+
 -(void)defaultRecusiveGrowMaze:(MazeCell *)mazeCell{
     //NSLog(@"recursive at (%i,%i)",mazeCell.x,mazeCell.y);
     [mazeCell visit];
@@ -107,5 +115,6 @@
     //NSLog(@"defaultGernerateMaze");
     [self defaultRecusiveGrowMaze:[[self mazeGraph] getCellAtX:0 y:0]];
 }
+
 
 @end

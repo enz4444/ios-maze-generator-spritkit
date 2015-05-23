@@ -103,18 +103,18 @@
 
 -(NSArray *)cellNeighbors:(MazeCell *)cell{
     NSMutableArray *neighbors = [NSMutableArray array];
-    MazeCell *topCell =    [self getCellAtX:cell.x       y:(cell.y - 1)];
+    MazeCell *topCell =    [self getCellAtX:cell.x       y:(cell.y + 1)];
     MazeCell *rightCell =  [self getCellAtX:(cell.x + 1) y:cell.y];
-    MazeCell *bottomCell = [self getCellAtX:cell.x       y:(cell.y + 1)];
+    MazeCell *bottomCell = [self getCellAtX:cell.x       y:(cell.y - 1)];
     MazeCell *leftCell =   [self getCellAtX:(cell.x - 1) y:cell.y];
 
-    if(cell.y > 0 && topCell) {
+    if(cell.y < self.height && topCell) {
         [neighbors addObject:topCell];
     }
     if(cell.x < self.width && rightCell) {
         [neighbors addObject:rightCell];
     }
-    if(cell.y < self.height && bottomCell) {
+    if(cell.y > 0 && bottomCell) {
         [neighbors addObject:bottomCell];
     }
     if(cell.x > 0 && leftCell) {
@@ -127,6 +127,37 @@
 -(void)removeEdgeBetween:(MazeCell *)cellA and:(MazeCell *)cellB{
     NSSet *edgePair = [[NSSet alloc] initWithObjects:cellA,cellB,nil];
     [self.removedEdges addObject:edgePair];
+    // add switch to mark the wallMask in both of the cell
+    int xDelta = cellA.x - cellB.x;
+    int yDelta = cellA.y - cellB.y;
+    //same column, because x is the same, either top or bottom, assume
+    if (xDelta == 0) {
+        // positive y means A is top, B is under A
+        if (yDelta < 0) {
+            // B is at A's top
+            cellA.wallOpenBitMask = cellA.wallOpenBitMask | TopWallOpen ;
+            cellB.wallOpenBitMask = cellB.wallOpenBitMask | BottomWallOpen;
+        }
+        else{
+            // B is at A's bottome
+            cellA.wallOpenBitMask = cellA.wallOpenBitMask | BottomWallOpen ;
+            cellB.wallOpenBitMask = cellB.wallOpenBitMask | TopWallOpen;
+        }
+    }
+    else{
+        if (xDelta > 0 ) {
+            // B is at A's left
+            cellA.wallOpenBitMask = cellA.wallOpenBitMask | LeftWallOpen ;
+            cellB.wallOpenBitMask = cellB.wallOpenBitMask | RightWallOpen;
+        }
+        else{
+            // B is at A's right
+            cellA.wallOpenBitMask = cellA.wallOpenBitMask | RightWallOpen ;
+            cellB.wallOpenBitMask = cellB.wallOpenBitMask | LeftWallOpen;
+        }
+    }
+    
 }
+
 
 @end

@@ -8,6 +8,7 @@
 
 #import "MazeCell.h"
 
+
 @interface MazeCell()
 
 @end
@@ -26,6 +27,8 @@
     }
     self.visited = NO;
     self.discorver = 0;
+    self.wallOpenBitMask = AllwallsClose;
+    self.wallShapeBitMask = wallUndefinedShape;
     return self;
 }
 
@@ -40,6 +43,8 @@
     self.x = x;
     self.y = y;
     self.parent = nil;
+    self.wallOpenBitMask = AllwallsClose;
+    self.wallShapeBitMask = wallUndefinedShape;
     return self;
 }
 

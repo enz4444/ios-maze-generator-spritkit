@@ -16,6 +16,10 @@
 		B3C9E6581B0D894C005BFFDD /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B3C9E6571B0D894C005BFFDD /* Images.xcassets */; };
 		B3C9E65B1B0D894C005BFFDD /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = B3C9E6591B0D894C005BFFDD /* LaunchScreen.xib */; };
 		B3C9E6671B0D894C005BFFDD /* MazeGeneratorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B3C9E6661B0D894C005BFFDD /* MazeGeneratorTests.m */; };
+		B3C9E67A1B1065C6005BFFDD /* MazeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B3C9E6711B1065C6005BFFDD /* MazeCell.m */; };
+		B3C9E67C1B1065C6005BFFDD /* MazeGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = B3C9E6751B1065C6005BFFDD /* MazeGenerator.m */; };
+		B3C9E67D1B1065C6005BFFDD /* MazeGraph.m in Sources */ = {isa = PBXBuildFile; fileRef = B3C9E6761B1065C6005BFFDD /* MazeGraph.m */; };
+		B3C9E67E1B1065C6005BFFDD /* MazeScene.m in Sources */ = {isa = PBXBuildFile; fileRef = B3C9E6781B1065C6005BFFDD /* MazeScene.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +49,14 @@
 		B3C9E6601B0D894C005BFFDD /* MazeGeneratorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MazeGeneratorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3C9E6651B0D894C005BFFDD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B3C9E6661B0D894C005BFFDD /* MazeGeneratorTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MazeGeneratorTests.m; sourceTree = "<group>"; };
+		B3C9E6701B1065C6005BFFDD /* MazeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MazeCell.h; sourceTree = "<group>"; };
+		B3C9E6711B1065C6005BFFDD /* MazeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MazeCell.m; sourceTree = "<group>"; };
+		B3C9E6741B1065C6005BFFDD /* MazeGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MazeGenerator.h; sourceTree = "<group>"; };
+		B3C9E6751B1065C6005BFFDD /* MazeGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MazeGenerator.m; sourceTree = "<group>"; };
+		B3C9E6761B1065C6005BFFDD /* MazeGraph.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MazeGraph.m; sourceTree = "<group>"; };
+		B3C9E6771B1065C6005BFFDD /* MazeScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MazeScene.h; sourceTree = "<group>"; };
+		B3C9E6781B1065C6005BFFDD /* MazeScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MazeScene.m; sourceTree = "<group>"; };
+		B3C9E6791B1065C6005BFFDD /* MazeGenerator-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MazeGenerator-Prefix.pch"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +98,14 @@
 		B3C9E6441B0D894C005BFFDD /* MazeGenerator */ = {
 			isa = PBXGroup;
 			children = (
+				B3C9E6701B1065C6005BFFDD /* MazeCell.h */,
+				B3C9E6711B1065C6005BFFDD /* MazeCell.m */,
+				B3C9E6741B1065C6005BFFDD /* MazeGenerator.h */,
+				B3C9E6751B1065C6005BFFDD /* MazeGenerator.m */,
+				B3C9E6761B1065C6005BFFDD /* MazeGraph.m */,
+				B3C9E6771B1065C6005BFFDD /* MazeScene.h */,
+				B3C9E6781B1065C6005BFFDD /* MazeScene.m */,
+				B3C9E6791B1065C6005BFFDD /* MazeGenerator-Prefix.pch */,
 				B3C9E6491B0D894C005BFFDD /* AppDelegate.h */,
 				B3C9E64A1B0D894C005BFFDD /* AppDelegate.m */,
 				B3C9E64C1B0D894C005BFFDD /* GameScene.h */,
@@ -228,10 +248,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B3C9E67C1B1065C6005BFFDD /* MazeGenerator.m in Sources */,
 				B3C9E6531B0D894C005BFFDD /* GameViewController.m in Sources */,
 				B3C9E64B1B0D894C005BFFDD /* AppDelegate.m in Sources */,
 				B3C9E64E1B0D894C005BFFDD /* GameScene.m in Sources */,
+				B3C9E67D1B1065C6005BFFDD /* MazeGraph.m in Sources */,
 				B3C9E6481B0D894C005BFFDD /* main.m in Sources */,
+				B3C9E67A1B1065C6005BFFDD /* MazeCell.m in Sources */,
+				B3C9E67E1B1065C6005BFFDD /* MazeScene.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -359,6 +383,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(PROJECT_DIR)/MazeGenerator/MazeGenerator-Prefix.pch";
 				INFOPLIST_FILE = MazeGenerator/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -369,6 +396,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(PROJECT_DIR)/MazeGenerator/MazeGenerator-Prefix.pch";
 				INFOPLIST_FILE = MazeGenerator/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -428,6 +458,7 @@
 				B3C9E66C1B0D894C005BFFDD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		B3C9E66D1B0D894C005BFFDD /* Build configuration list for PBXNativeTarget "MazeGeneratorTests" */ = {
 			isa = XCConfigurationList;
@@ -436,6 +467,7 @@
 				B3C9E66F1B0D894C005BFFDD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -7,8 +7,6 @@
 //
 
 #import "GameViewController.h"
-#import "GameScene.h"
-#import "MazeGenerator.h"
 
 
 @implementation SKScene (Unarchive)
@@ -35,6 +33,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
     /*
     for (int i = 0; i < 100; i++) {
         NSLog(@"int: %u",arc4random_uniform(10));
@@ -52,66 +51,104 @@
     NSMutableArray *pointer = strings;
     [strings addObject:@"3"];
     NSLog(@"%@",pointer);//1,2,3
+     
      */
-    MazeGenerator *testMaze = [[MazeGenerator alloc] initMazeWithWidth:10 height:10];
-    [testMaze defaultGenerateMaze];
-    [testMaze defaultSolveMaze];
-    NSLog(@"%lu",testMaze.path.count);
-    for (MazeCell *step in testMaze.path) {
-        NSLog(@"(%i,%i)",step.x,step.y);
-
-    }
-    // ⅃
-    /*
-     //whole maze
-    for (int i = 0; i < 5; i++) {
-        for (int j = 0; j < 5; j++) {
-           NSLog(@"(%i,%i)",((MazeCell *)testMaze.mazeGraph.cells[i][j]).x,((MazeCell *)testMaze.mazeGraph.cells[i][j]).y);
+    MazeGenerator *testMaze;
+    @try {
+        int mazeWidth = 10;
+        int mazeHeight = 10;
+        testMaze = [[MazeGenerator alloc] initMazeWithWidth:mazeWidth height:mazeHeight];
+        [testMaze defaultMaze];
+        //print solution path
+        if (ZenDebug) {
+            for (MazeCell *step in testMaze.path) {
+                NSLog(@"(%i,%i)",step.x,step.y);
+                
+            }
         }
-    }
-    */
-    //NSLog(@"(%i,%i)",((MazeCell *)testMaze.mazeGraph.cells[i][j]),((MazeCell *)testMaze.mazeGraph.cells[i][j]));
-
-    for (int j = 0; j < 9; j++) {
         
-        NSString *row = @"";
-        for (int i = 0; i < 9; i++) {
-            if(![testMaze.mazeGraph areConnectedBetween:((MazeCell *)testMaze.mazeGraph.cells[i][j]) and:((MazeCell *)testMaze.mazeGraph.cells[i+1][j])]){
-                if(![testMaze.mazeGraph areConnectedBetween:((MazeCell *)testMaze.mazeGraph.cells[i][j]) and:((MazeCell *)testMaze.mazeGraph.cells[i][j+1])]){
-                    row=[row stringByAppendingString:@" "];
+        //ASCII maze no right,bottom walls // ⅃
+        if (ZenDebug) {
+            for (int j = 0; j < mazeHeight-1; j++) {
+                NSString *row = @"";
+                for (int i = 0; i < mazeWidth-1; i++) {
+                    if(![testMaze.mazeGraph areConnectedBetween:((MazeCell *)testMaze.mazeGraph.cells[i][j]) and:((MazeCell *)testMaze.mazeGraph.cells[i+1][j])]){
+                        if(![testMaze.mazeGraph areConnectedBetween:((MazeCell *)testMaze.mazeGraph.cells[i][j]) and:((MazeCell *)testMaze.mazeGraph.cells[i][j+1])]){
+                            row=[row stringByAppendingString:@" "];
+                        }
+                        else{
+                            row=[row stringByAppendingString:@"_"];
+                        }
+                    }
+                    else{
+                        if(![testMaze.mazeGraph areConnectedBetween:((MazeCell *)testMaze.mazeGraph.cells[i][j]) and:((MazeCell *)testMaze.mazeGraph.cells[i][j+1])]){
+                            row=[row stringByAppendingString:@"|"];
+                        }
+                        else{
+                            row=[row stringByAppendingString:@">"];
+                        }
+                    }
                 }
-                else{
-                    row=[row stringByAppendingString:@"_"];
-                }
-            }
-            else{
-                if(![testMaze.mazeGraph areConnectedBetween:((MazeCell *)testMaze.mazeGraph.cells[i][j]) and:((MazeCell *)testMaze.mazeGraph.cells[i][j+1])]){
-                    row=[row stringByAppendingString:@"|"];
-                }
-                else{
-                    row=[row stringByAppendingString:@">"];
-                }
+                NSLog(@"%@",row);
             }
         }
-        NSLog(@"%@",row);
-    }
+        
 
+    }
+    @catch (NSException *exception) {
+        NSLog(@"Error: failure to generate default maze. \nDescription: %@", exception.description);
+
+    }
+    @finally {
+        
+    }
+    
+    if (testMaze) {
+        SKView * mazeSKView = [[SKView alloc] initWithFrame:CGRectMake(0, 0, ZenSW, ZenSW)];
+        SKView * skView = (SKView *)self.view;
+        // Configure the view.
+
+        MazeScene *mazeScene = [[MazeScene alloc] initWithMaze:testMaze andScreenSize:CGSizeMake(skView.frame.size.width, skView.frame.size.width)];
+        mazeScene.scaleMode = SKSceneScaleModeAspectFit;
+        mazeScene.backgroundColor = [UIColor whiteColor];
+        //mazeScene.position = CGPointMake(ZenSW / 2, ZenSW / 2);
+        //mazeScene.frame = CGRectMake(0, 0, skView.frame.size.width, skView.frame.size.width);
+        NSLog(@"casted skView: %f, %f, %f, %f",skView.frame.origin.x,skView.frame.origin.y,skView.frame.size.width,skView.frame.size.height);
+        mazeSKView.showsFPS = YES;
+        mazeSKView.showsDrawCount = YES;
+        mazeSKView.showsQuadCount = YES;
+        mazeSKView.showsPhysics = YES;
+        mazeSKView.showsFields = YES;
+        mazeSKView.showsNodeCount = YES;
+        /* Sprite Kit applies additional optimizations to improve rendering performance */
+        skView.ignoresSiblingOrder = YES;
+        mazeSKView.ignoresSiblingOrder = YES;
+        // otherwise the game view is in center, can't set its position nor frame
+        [skView addSubview:mazeSKView];
+        // Present the scene.
+        [mazeSKView presentScene:mazeScene];
+    }
+    else{
+        // Configure the view.
+        SKView * skView = (SKView *)self.view;
+        skView.showsFPS = YES;
+        skView.showsDrawCount = YES;
+        skView.showsQuadCount = YES;
+        skView.showsPhysics = YES;
+        skView.showsFields = YES;
+        skView.showsNodeCount = YES;
+        skView.ignoresSiblingOrder = YES;
+        
+        // Create and configure the scene.
+        GameScene *scene = [GameScene unarchiveFromFile:@"GameScene"];
+        scene.scaleMode = SKSceneScaleModeAspectFill;
+        
+        // Present the scene.
+        [skView presentScene:scene];
+    }
     
     
     
-    // Configure the view.
-    SKView * skView = (SKView *)self.view;
-    skView.showsFPS = YES;
-    skView.showsNodeCount = YES;
-    /* Sprite Kit applies additional optimizations to improve rendering performance */
-    skView.ignoresSiblingOrder = YES;
-    
-    // Create and configure the scene.
-    GameScene *scene = [GameScene unarchiveFromFile:@"GameScene"];
-    scene.scaleMode = SKSceneScaleModeAspectFill;
-    
-    // Present the scene.
-    [skView presentScene:scene];
 }
 
 - (BOOL)shouldAutorotate
