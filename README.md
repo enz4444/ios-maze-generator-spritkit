@@ -11,3 +11,6 @@ Note:
 TODO:
 - More Algorithm
 - Algorithm Setting
+
+![alt tag](https://github.com/littlebeef/ios-maze-generator-spritkit/blob/master/maze-1.png)
+![alt tag](https://github.com/littlebeef/ios-maze-generator-spritkit/blob/master/maze-2.png)
