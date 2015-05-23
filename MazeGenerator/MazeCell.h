@@ -20,18 +20,6 @@ typedef NS_ENUM(uint32_t, openWallType)
     AllwallsClose    = 0x0
 };
 
-typedef NS_ENUM(uint32_t, wallShapeType)
-{
-    // self ^ (TopWallOpen | BottomWallOpen)
-    wallVerticalTubeShapeType       = 0x1 << 0,
-    
-    // self ^ (LeftWallOpen | RightWallOpen)
-    wallHorizontalTubeShapeType     = 0x1 << 1,
-    
-    //default
-    wallUndefinedShape              = 0x0
-};
-
 @interface MazeCell:NSObject
 
 @property (assign, nonatomic) int x;
@@ -40,7 +28,6 @@ typedef NS_ENUM(uint32_t, wallShapeType)
 @property (strong, nonatomic) MazeCell *parent;
 @property (assign, nonatomic) int discorver;
 @property (assign, nonatomic) openWallType wallOpenBitMask; //N,W,S,E or U,L,D,R
-@property (assign, nonatomic) wallShapeType wallShapeBitMask;
 
 -(instancetype)init;
 
@@ -75,48 +62,4 @@ typedef NS_ENUM(uint32_t, wallShapeType)
  */
 -(NSArray *)pathToOrigin;
 
-/**
- *  original js
- */
-/*
- var Cell = function(x, y) {
- this.x = x;
- this.y = y;
- this.visited = false;
- 
- // When solving the maze, this represents
- // the previous node in the navigated path.
- this.parent = null;
- 
- this.discorver = 0;
- 
- this.visit = function () {
- this.visited = true;
- };
- 
- this.score = function () {
- var total = 0;
- var p = this.parent;
- 
- while(p) {
- ++total;
- p = p.parent;
- }
- return total;
- };
- 
- this.pathToOrigin = function () {
- var path = [this];
- var p = this.parent;
- 
- while(p) {
- path.push(p);
- p = p.parent;
- }
- path.reverse();
- 
- return path;
- };
- };
- */
 @end

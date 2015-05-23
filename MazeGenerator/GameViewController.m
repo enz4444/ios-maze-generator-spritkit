@@ -33,26 +33,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    /*
-    for (int i = 0; i < 100; i++) {
-        NSLog(@"int: %u",arc4random_uniform(10));
-    }
-     */
-    /*
-    NSNumber *one = [NSNumber numberWithInt:1];
-    NSNumber *pointToOne = one;
-    NSLog(@"first: %@, %@", [one stringValue],[pointToOne stringValue]);//1,1
-    one = [NSNumber numberWithInt:2];
-    NSLog(@"second: %@, %@", [one stringValue],[pointToOne stringValue]);//2,1
-    */
-    /*
-    NSMutableArray *strings = [NSMutableArray arrayWithObjects:@"1",@"2", nil];
-    NSMutableArray *pointer = strings;
-    [strings addObject:@"3"];
-    NSLog(@"%@",pointer);//1,2,3
-     
-     */
     MazeGenerator *testMaze;
     @try {
         int mazeWidth = 10;

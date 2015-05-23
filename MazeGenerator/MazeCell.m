@@ -28,7 +28,6 @@
     self.visited = NO;
     self.discorver = 0;
     self.wallOpenBitMask = AllwallsClose;
-    self.wallShapeBitMask = wallUndefinedShape;
     return self;
 }
 
@@ -44,7 +43,6 @@
     self.y = y;
     self.parent = nil;
     self.wallOpenBitMask = AllwallsClose;
-    self.wallShapeBitMask = wallUndefinedShape;
     return self;
 }
 

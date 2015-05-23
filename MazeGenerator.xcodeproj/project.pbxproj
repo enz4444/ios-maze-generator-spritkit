@@ -57,6 +57,7 @@
 		B3C9E6771B1065C6005BFFDD /* MazeScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MazeScene.h; sourceTree = "<group>"; };
 		B3C9E6781B1065C6005BFFDD /* MazeScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MazeScene.m; sourceTree = "<group>"; };
 		B3C9E6791B1065C6005BFFDD /* MazeGenerator-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MazeGenerator-Prefix.pch"; sourceTree = "<group>"; };
+		B3C9E6801B106C32005BFFDD /* MazeGraph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MazeGraph.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,12 +101,12 @@
 			children = (
 				B3C9E6701B1065C6005BFFDD /* MazeCell.h */,
 				B3C9E6711B1065C6005BFFDD /* MazeCell.m */,
+				B3C9E6801B106C32005BFFDD /* MazeGraph.h */,
+				B3C9E6761B1065C6005BFFDD /* MazeGraph.m */,
 				B3C9E6741B1065C6005BFFDD /* MazeGenerator.h */,
 				B3C9E6751B1065C6005BFFDD /* MazeGenerator.m */,
-				B3C9E6761B1065C6005BFFDD /* MazeGraph.m */,
 				B3C9E6771B1065C6005BFFDD /* MazeScene.h */,
 				B3C9E6781B1065C6005BFFDD /* MazeScene.m */,
-				B3C9E6791B1065C6005BFFDD /* MazeGenerator-Prefix.pch */,
 				B3C9E6491B0D894C005BFFDD /* AppDelegate.h */,
 				B3C9E64A1B0D894C005BFFDD /* AppDelegate.m */,
 				B3C9E64C1B0D894C005BFFDD /* GameScene.h */,
@@ -113,6 +114,7 @@
 				B3C9E64F1B0D894C005BFFDD /* GameScene.sks */,
 				B3C9E6511B0D894C005BFFDD /* GameViewController.h */,
 				B3C9E6521B0D894C005BFFDD /* GameViewController.m */,
+				B3C9E6791B1065C6005BFFDD /* MazeGenerator-Prefix.pch */,
 				B3C9E6541B0D894C005BFFDD /* Main.storyboard */,
 				B3C9E6571B0D894C005BFFDD /* Images.xcassets */,
 				B3C9E6591B0D894C005BFFDD /* LaunchScreen.xib */,

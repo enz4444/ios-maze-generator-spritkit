@@ -15,10 +15,6 @@
  */
 -(void)drawAllWallsAsOneNode;
 
-/**
- *  draw different types of cell walls. e.g. tube shape
- */
--(void)drawAllWallsWithCellWallTypes;
 
 /**
  *  simple method to paint/draw the solution path
@@ -178,32 +174,7 @@ static float squareWallThickness;
 }
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
-    for (UITouch *touch in touches) {
-        CGPoint location = [touch locationInNode:self];
-        SKShapeNode *square2 = [SKShapeNode shapeNodeWithRect:CGRectMake(0,0,50,50)];
-        //square2.
-        square2.position = location;
-        square2.lineWidth = 5;
-        square2.fillColor = [SKColor blackColor];
-        square2.strokeColor = [SKColor redColor];
-        [self addChild:square2];
-        NSLog(@"touchesBegan: %f, %f, %f, %f",square2.frame.origin.x,square2.frame.origin.y,square2.frame.size.width,square2.frame.size.height);
-        
-        /*
-        //test
-        SKShapeNode *square = [SKShapeNode node];
-        UIBezierPath* wallPath = [[UIBezierPath alloc] init];
-        //from origin point, draw bottom line
-        [wallPath moveToPoint:CGPointMake(0.0, 0.0)];
-        [wallPath addLineToPoint:CGPointMake(10.0,30.0)];
-        [wallPath moveToPoint:CGPointMake(50.0, 150.0)];
-        [wallPath addLineToPoint:CGPointMake(100.0,300.0)];
-        square.path = [wallPath CGPath];
-        square.lineWidth = 2;
-        square.strokeColor = [SKColor grayColor];
-        [self addChild:square];
-         */
-    }
+
 }
 
 -(instancetype)initWithMaze:(MazeGenerator *)maze andScreenSize:(CGSize)screenSize{
@@ -214,16 +185,6 @@ static float squareWallThickness;
     self.theMaze = maze;
     squareLength = self.size.width / self.theMaze.mazeGraph.width;
     squareWallThickness = squareLength / 10.0;
-
-    /*
-    self.twoDSKNodes = [[NSMutableArray alloc] initWithCapacity:self.theMaze.mazeGraph.width];
-    for (int i = 0; i < self.theMaze.mazeGraph.width; i++) {
-        self.twoDSKNodes[i] = [[NSMutableArray alloc] initWithCapacity:self.theMaze.mazeGraph.height];
-        for (int j = 0; j < self.theMaze.mazeGraph.height; j++) {
-            self.twoDSKNodes[i][j] = [SKShapeNode node];
-        }
-    }
-    */
     return self;
 }
 
